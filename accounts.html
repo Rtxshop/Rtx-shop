@@ -14,7 +14,6 @@
     --gold-dark: #E5A500;
     --gold-light: #FFD466;
     --blue: #4DA6FF;
-    --purple: #9D4EDD;
     --green: #00C853;
     --red: #E63946;
     --dark: #0F0F1E;
@@ -26,10 +25,8 @@
     --glow: 0 0 20px rgba(255, 184, 0, 0.4);
     --glow-strong: 0 0 40px rgba(255, 184, 0, 0.6);
   }
-
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
-
   body {
     font-family: 'Vazirmatn', sans-serif;
     background: var(--dark);
@@ -40,10 +37,8 @@
       radial-gradient(circle at 20% 10%, rgba(157, 78, 221, 0.15) 0%, transparent 40%),
       radial-gradient(circle at 80% 80%, rgba(77, 166, 255, 0.15) 0%, transparent 40%);
   }
-
   a { text-decoration: none; color: inherit; }
 
-  /* ذرات شناور */
   .floating-particles {
     position: fixed; inset: 0; pointer-events: none; z-index: 1; overflow: hidden;
   }
@@ -63,7 +58,6 @@
 
   .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 2; }
 
-  /* هدر */
   header {
     position: sticky; top: 0; z-index: 100;
     background: rgba(15, 15, 30, 0.85);
@@ -80,7 +74,7 @@
     width: 48px; height: 48px; border-radius: 12px;
     background: linear-gradient(135deg, var(--gold), var(--gold-dark));
     display: flex; align-items: center; justify-content: center;
-    font-size: 20px; color: var(--dark); font-weight: 900;
+    font-size: 16px; color: var(--dark); font-weight: 900;
     box-shadow: var(--glow); transition: transform 0.4s;
   }
   .logo:hover .logo-icon { transform: rotate(360deg) scale(1.1); }
@@ -112,10 +106,7 @@
     border-radius: 10px; cursor: pointer;
   }
 
-  /* بخش هدر صفحه */
-  .page-hero {
-    padding: 60px 0 40px; text-align: center;
-  }
+  .page-hero { padding: 60px 0 40px; text-align: center; }
   .page-hero h1 {
     font-family: 'Bebas Neue', 'Vazirmatn', sans-serif;
     font-size: 52px; font-weight: 900;
@@ -128,7 +119,6 @@
   }
   .page-hero p { font-size: 15px; color: var(--text-muted); }
 
-  /* فیلترها */
   .filters-box {
     background: linear-gradient(135deg, var(--dark-2), var(--dark-3));
     border: 1px solid var(--border);
@@ -140,9 +130,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 16px;
-    margin-bottom: 16px;
   }
-  .filter-row:last-child { margin-bottom: 0; }
   .filter-group label {
     display: block; font-size: 12px;
     font-weight: 700; color: var(--gold);
@@ -162,58 +150,37 @@
     outline: none; border-color: var(--gold);
     box-shadow: 0 0 0 3px rgba(255, 184, 0, 0.15);
   }
-  .filter-group select option {
-    background: var(--dark-2); color: var(--text);
-  }
-
-  .search-box {
-    position: relative;
-  }
-  .search-box input {
-    padding-right: 44px;
-  }
+  .filter-group select option { background: var(--dark-2); color: var(--text); }
+  .search-box { position: relative; }
+  .search-box input { padding-right: 44px; }
   .search-box::before {
-    content: '🔍';
-    position: absolute;
-    right: 14px; top: 50%;
-    transform: translateY(-50%);
-    font-size: 16px;
-    pointer-events: none;
+    content: '🔍'; position: absolute;
+    right: 14px; top: 50%; transform: translateY(-50%);
+    font-size: 16px; pointer-events: none;
   }
 
-  /* آمار */
   .stats-row {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    margin-bottom: 30px;
-    flex-wrap: wrap;
+    display: flex; justify-content: center; gap: 30px;
+    margin-bottom: 30px; flex-wrap: wrap;
   }
   .stat-badge {
     background: rgba(255, 184, 0, 0.1);
     border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 10px 20px;
-    font-size: 13px;
-    font-weight: 700;
-    color: var(--gold);
+    border-radius: 12px; padding: 10px 20px;
+    font-size: 13px; font-weight: 700; color: var(--gold);
   }
   .stat-badge .num { font-size: 18px; font-weight: 900; }
 
-  /* کارت اکانت */
   .accounts-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 24px;
-    padding-bottom: 60px;
+    gap: 24px; padding-bottom: 60px;
   }
   .account-card {
     background: linear-gradient(135deg, var(--dark-2), var(--dark-3));
     border: 1px solid var(--border);
-    border-radius: 20px;
-    overflow: hidden;
-    transition: all 0.4s;
-    position: relative;
+    border-radius: 20px; overflow: hidden;
+    transition: all 0.4s; position: relative;
     animation: fadeInUp 0.6s ease backwards;
   }
   @keyframes fadeInUp {
@@ -230,10 +197,10 @@
     background: linear-gradient(135deg, var(--dark-3), var(--dark-2));
     display: flex; align-items: center; justify-content: center;
     font-size: 80px; position: relative; overflow: hidden;
+    background-size: cover; background-position: center;
   }
   .account-image::after {
-    content: '';
-    position: absolute; inset: 0;
+    content: ''; position: absolute; inset: 0;
     background: linear-gradient(180deg, transparent 50%, var(--dark-2) 100%);
   }
   .account-th {
@@ -249,11 +216,11 @@
     font-size: 11px; font-weight: 800; z-index: 2;
   }
   .account-status.available {
-    background: rgba(0, 200, 83, 0.2); color: var(--green);
+    background: rgba(0, 200, 83, 0.9); color: #fff;
     border: 1px solid var(--green);
   }
   .account-status.sold {
-    background: rgba(230, 57, 70, 0.2); color: var(--red);
+    background: rgba(230, 57, 70, 0.9); color: #fff;
     border: 1px solid var(--red);
   }
   .account-body { padding: 20px; }
@@ -318,19 +285,34 @@
     border-color: var(--gold); color: var(--gold);
     transform: translateY(-3px);
   }
+  .btn-secondary:disabled {
+    opacity: 0.5; cursor: not-allowed;
+  }
 
   .empty-state {
     grid-column: 1 / -1;
-    text-align: center;
-    padding: 80px 20px;
+    text-align: center; padding: 80px 20px;
     background: linear-gradient(135deg, var(--dark-2), var(--dark-3));
     border: 1px solid var(--border);
-    border-radius: 20px;
-    color: var(--text-muted);
+    border-radius: 20px; color: var(--text-muted);
   }
   .empty-state .emoji { font-size: 70px; display: block; margin-bottom: 16px; }
 
-  /* فوتر */
+  .loading-state {
+    grid-column: 1 / -1;
+    text-align: center; padding: 80px 20px;
+    color: var(--text-muted);
+  }
+  .spinner {
+    display: inline-block; width: 40px; height: 40px;
+    border: 4px solid var(--border);
+    border-top-color: var(--gold);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin-bottom: 16px;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
   footer {
     background: var(--dark-2);
     border-top: 1px solid var(--border);
@@ -377,7 +359,7 @@
     .filter-row { grid-template-columns: 1fr; }
     .accounts-grid { grid-template-columns: 1fr; }
     .logo-title { font-size: 20px; }
-    .logo-icon { width: 40px; height: 40px; font-size: 16px; }
+    .logo-icon { width: 40px; height: 40px; font-size: 13px; }
   }
 </style>
 </head>
@@ -420,7 +402,6 @@
 <section>
   <div class="container">
 
-    <!-- فیلترها -->
     <div class="filters-box">
       <div class="filter-row">
         <div class="filter-group search-box">
@@ -462,15 +443,18 @@
       </div>
     </div>
 
-    <!-- آمار -->
     <div class="stats-row">
       <div class="stat-badge">📊 مجموع: <span class="num" id="totalCount">۰</span></div>
       <div class="stat-badge">✅ موجود: <span class="num" id="availableCount">۰</span></div>
       <div class="stat-badge">❌ فروش رفته: <span class="num" id="soldCount">۰</span></div>
     </div>
 
-    <!-- لیست اکانت‌ها -->
-    <div id="accountsContainer" class="accounts-grid"></div>
+    <div id="accountsContainer" class="accounts-grid">
+      <div class="loading-state">
+        <div class="spinner"></div>
+        <p>در حال بارگذاری اکانت‌ها...</p>
+      </div>
+    </div>
 
   </div>
 </section>
@@ -506,23 +490,24 @@
   </div>
 </footer>
 
-<script>
-// ===== داده‌های نمونه (بعداً از Supabase میان) =====
-const sampleAccounts = [
-  { id: 1, code: '230', townhall: 10, title: 'اکانت کلش آف کلنز', tagline: '🔥 نقد و اقساط تضمینی 🔥', builder_level: 10, name_change: 1500, price: 5200, status: 'available', image: '' },
-  { id: 2, code: '231', townhall: 12, title: 'اکانت کلش آف کلنز', tagline: '🔥 نقد و اقساط تضمینی 🔥', builder_level: 12, name_change: 2000, price: 8500, status: 'available', image: '' },
-  { id: 3, code: '232', townhall: 15, title: 'اکانت کلش آف کلنز مکس', tagline: '💎 اکانت مکس کامل 💎', builder_level: 15, name_change: 2500, price: 15000, status: 'available', image: '' },
-  { id: 4, code: '233', townhall: 8, title: 'اکانت کلش آف کلنز', tagline: '🔥 مناسب شروع 🔥', builder_level: 8, name_change: 1200, price: 3000, status: 'sold', image: '' },
-  { id: 5, code: '234', townhall: 14, title: 'اکانت کلش آف کلنز', tagline: '🔥 نقد و اقساط تضمینی 🔥', builder_level: 14, name_change: 2200, price: 12000, status: 'available', image: '' },
-  { id: 6, code: '235', townhall: 11, title: 'اکانت کلش آف کلنز', tagline: '🔥 پیشرفته 🔥', builder_level: 11, name_change: 1800, price: 7000, status: 'available', image: '' },
-];
+<script type="module">
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
 
-let allAccounts = [...sampleAccounts];
+const SUPABASE_URL = 'https://ifsjhzhogxthighbcyyh.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imlmc2poemhvZ3h0aWhnaGJjeXloIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTAwMDI5ODMsImV4cCI6MjEwNTU3ODk4M30.9r2IWXK2G9GOAeWhS1UgDEC8IhAgvZcWgM6-YusbBYc';
 
-// ===== نمایش اکانت‌ها =====
+const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+
+let allAccounts = [];
+
+function escapeHtml(str) {
+  return String(str || '').replace(/[&<>"']/g, m => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+  }[m]));
+}
+
 function renderAccounts(accounts) {
   const container = document.getElementById('accountsContainer');
-
   if (accounts.length === 0) {
     container.innerHTML = `
       <div class="empty-state">
@@ -536,23 +521,23 @@ function renderAccounts(accounts) {
 
   container.innerHTML = accounts.map((acc, i) => `
     <div class="account-card" style="animation-delay: ${i * 0.1}s">
-      <div class="account-image">
-        <span>🏰</span>
+      <div class="account-image" ${acc.image ? `style="background-image: url('${escapeHtml(acc.image)}')"` : ''}>
+        ${!acc.image ? '<span>🏰</span>' : ''}
         <span class="account-th">TH ${acc.townhall}</span>
         <span class="account-status ${acc.status === 'available' ? 'available' : 'sold'}">
           ${acc.status === 'available' ? '✅ موجود' : '❌ فروش رفته'}
         </span>
       </div>
       <div class="account-body">
-        <div class="account-code">#کد ${acc.code}</div>
-        <h3 class="account-title">${acc.title}</h3>
-        <div class="account-tagline">${acc.tagline}</div>
+        <div class="account-code">#کد ${escapeHtml(acc.code)}</div>
+        <h3 class="account-title">${escapeHtml(acc.title)}</h3>
+        <div class="account-tagline">${escapeHtml(acc.tagline)}</div>
         <div class="account-meta">
-          <span class="meta-tag">🏗 لول بیلدر: ${acc.builder_level}</span>
-          <span class="meta-tag">✏️ تغییر نام: ${acc.name_change}</span>
+          ${acc.builder_level ? `<span class="meta-tag">🏗 لول بیلدر: ${acc.builder_level}</span>` : ''}
+          ${acc.name_change ? `<span class="meta-tag">✏️ تغییر نام: ${acc.name_change}</span>` : ''}
         </div>
         <div class="account-price">
-          ${acc.price.toLocaleString('fa-IR')} <span class="unit">تومان</span>
+          ${Number(acc.price).toLocaleString('fa-IR')} <span class="unit">تومان</span>
         </div>
         <div class="account-btns">
           ${acc.status === 'available'
@@ -565,7 +550,6 @@ function renderAccounts(accounts) {
   `).join('');
 }
 
-// ===== اعمال فیلترها =====
 function applyFilters() {
   const search = document.getElementById('searchInput').value.trim().toLowerCase();
   const th = document.getElementById('filterTH').value;
@@ -575,20 +559,16 @@ function applyFilters() {
 
   if (search) {
     filtered = filtered.filter(a =>
-      a.title.toLowerCase().includes(search) ||
-      String(a.code).includes(search)
+      (a.title || '').toLowerCase().includes(search) ||
+      String(a.code || '').includes(search)
     );
   }
-  if (th) {
-    filtered = filtered.filter(a => String(a.townhall) === th);
-  }
+  if (th) filtered = filtered.filter(a => String(a.townhall) === th);
 
   if (sortBy === 'price-asc') filtered.sort((a, b) => a.price - b.price);
   else if (sortBy === 'price-desc') filtered.sort((a, b) => b.price - a.price);
-  else filtered.sort((a, b) => b.id - a.id);
 
   renderAccounts(filtered);
-  updateStats();
 }
 
 function updateStats() {
@@ -601,12 +581,34 @@ function updateStats() {
   document.getElementById('soldCount').textContent = sold.toLocaleString('fa-IR');
 }
 
+async function loadAccounts() {
+  const container = document.getElementById('accountsContainer');
+  const { data, error } = await supabase
+    .from('accounts')
+    .select('*')
+    .order('created_at', { ascending: false });
+
+  if (error) {
+    console.error(error);
+    container.innerHTML = `
+      <div class="empty-state">
+        <span class="emoji">❌</span>
+        <p>خطا در بارگذاری اکانت‌ها</p>
+      </div>
+    `;
+    return;
+  }
+
+  allAccounts = data || [];
+  applyFilters();
+  updateStats();
+}
+
 document.getElementById('searchInput').addEventListener('input', applyFilters);
 document.getElementById('filterTH').addEventListener('change', applyFilters);
 document.getElementById('sortBy').addEventListener('change', applyFilters);
 
-renderAccounts(allAccounts);
-updateStats();
+loadAccounts();
 
 function toggleMenu() {
   const nav = document.querySelector('nav');

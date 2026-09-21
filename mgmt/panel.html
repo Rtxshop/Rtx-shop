@@ -495,7 +495,7 @@
   </div>
   <div class="header-actions">
     <a href="../accounts.html" class="nav-btn" target="_blank">👁 مشاهده سایت</a>
-    <button class="logout-btn" id="logoutBtn">🚪 خروج</button>
+    <a href="index.html" class="nav-btn" onclick="logout(event)">🚪 خروج</a>
   </div>
 </header>
 
@@ -723,17 +723,15 @@ const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZ
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
-// ===== بررسی لاگین با Supabase Auth =====
-const { data: { session } } = await supabase.auth.getSession();
-if (!session) {
+if (sessionStorage.getItem('rtx_logged_in') !== 'true') {
   window.location.href = 'index.html';
 }
 
-// ===== خروج =====
-document.getElementById('logoutBtn').addEventListener('click', async () => {
-  await supabase.auth.signOut();
+window.logout = function(e) {
+  e.preventDefault();
+  sessionStorage.removeItem('rtx_logged_in');
   window.location.href = 'index.html';
-});
+};
 
 document.querySelectorAll('.tab').forEach(tab => {
   tab.addEventListener('click', () => {

@@ -251,14 +251,6 @@ const passwordInput = document.getElementById('password');
 const loginBtn = document.getElementById('loginBtn');
 const errorBox = document.getElementById('errorBox');
 
-async function checkSession() {
-  const { data: { session } } = await supabaseClient.auth.getSession();
-  if (session) {
-    window.location.href = 'panel.html';
-  }
-}
-checkSession();
-
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
   errorBox.classList.remove('show');
@@ -280,6 +272,7 @@ form.addEventListener('submit', async (e) => {
       return;
     }
 
+    // ورود موفق
     window.location.href = 'panel.html';
   } catch (err) {
     console.error('Catch error:', err);

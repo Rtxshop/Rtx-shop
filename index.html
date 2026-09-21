@@ -46,16 +46,11 @@
 
   /* ===== ذرات شناور ===== */
   .floating-particles {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 1;
-    overflow: hidden;
+    position: fixed; inset: 0; pointer-events: none;
+    z-index: 1; overflow: hidden;
   }
   .particle {
-    position: absolute;
-    font-size: 20px;
-    opacity: 0.3;
+    position: absolute; font-size: 20px; opacity: 0.3;
     animation: floatParticle 15s infinite ease-in-out;
   }
   .particle:nth-child(1) { left: 10%; top: 20%; animation-delay: 0s; }
@@ -78,160 +73,96 @@
 
   /* ===== هدر ===== */
   header {
-    position: sticky;
-    top: 0;
-    z-index: 100;
+    position: sticky; top: 0; z-index: 100;
     background: rgba(15, 15, 30, 0.85);
     backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--border);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
   }
   .header-inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 14px 0;
-    gap: 20px;
-    flex-wrap: wrap;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 0; gap: 20px; flex-wrap: wrap;
   }
-  .logo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-family: 'Bebas Neue', sans-serif;
-  }
+  .logo { display: flex; align-items: center; gap: 12px; }
   .logo-icon {
-    width: 48px;
-    height: 48px;
-    border-radius: 12px;
+    width: 48px; height: 48px; border-radius: 12px;
     background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 26px;
-    color: var(--dark);
-    box-shadow: var(--glow);
-    transition: transform 0.4s;
-    font-weight: 900;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; color: var(--dark); font-weight: 900;
+    box-shadow: var(--glow); transition: transform 0.4s;
   }
-  .logo:hover .logo-icon {
-    transform: rotate(360deg) scale(1.1);
-  }
-  .logo-text {
-    display: flex;
-    flex-direction: column;
-    line-height: 1.1;
-  }
+  .logo:hover .logo-icon { transform: rotate(360deg) scale(1.1); }
+  .logo-text { display: flex; flex-direction: column; line-height: 1.1; }
   .logo-title {
-    font-size: 24px;
-    font-weight: 900;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 24px; font-weight: 900;
     background: linear-gradient(135deg, var(--gold), var(--gold-light));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    letter-spacing: 2px;
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text; letter-spacing: 2px;
   }
-  .logo-sub {
-    font-size: 11px;
-    color: var(--text-muted);
-    font-family: 'Vazirmatn', sans-serif;
-    letter-spacing: 1px;
-  }
+  .logo-sub { font-size: 11px; color: var(--text-muted); letter-spacing: 1px; }
 
-  nav {
-    display: flex;
-    gap: 6px;
-    align-items: center;
-    flex-wrap: wrap;
-  }
+  nav { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
   nav a {
-    padding: 8px 16px;
-    border-radius: 10px;
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--text-muted);
-    transition: all 0.3s;
+    padding: 8px 16px; border-radius: 10px;
+    font-size: 14px; font-weight: 600;
+    color: var(--text-muted); transition: all 0.3s;
     border: 1px solid transparent;
   }
   nav a:hover, nav a.active {
-    color: var(--gold);
-    background: rgba(255, 184, 0, 0.1);
-    border-color: var(--border);
-    box-shadow: 0 0 15px rgba(255, 184, 0, 0.2);
+    color: var(--gold); background: rgba(255, 184, 0, 0.1);
+    border-color: var(--border); box-shadow: 0 0 15px rgba(255, 184, 0, 0.2);
   }
   .menu-btn {
-    display: none;
-    background: transparent;
-    border: 1px solid var(--border);
-    color: var(--gold);
-    font-size: 22px;
-    padding: 8px 14px;
-    border-radius: 10px;
-    cursor: pointer;
+    display: none; background: transparent;
+    border: 1px solid var(--border); color: var(--gold);
+    font-size: 22px; padding: 8px 14px;
+    border-radius: 10px; cursor: pointer;
   }
 
-  /* ===== دکمه‌های گیمینگی ===== */
+  /* ===== دکمه‌ها ===== */
   .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 14px 32px;
-    border-radius: 14px;
-    font-family: inherit;
-    font-size: 15px;
-    font-weight: 800;
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    border: none;
-    position: relative;
-    overflow: hidden;
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 14px 32px; border-radius: 14px;
+    font-family: inherit; font-size: 15px; font-weight: 800;
+    cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: none; position: relative; overflow: hidden;
     text-decoration: none;
   }
   .btn-primary {
     background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-    color: var(--dark);
-    box-shadow: 0 8px 25px rgba(255, 184, 0, 0.4);
+    color: var(--dark); box-shadow: 0 8px 25px rgba(255, 184, 0, 0.4);
   }
   .btn-primary:hover {
     transform: translateY(-3px) scale(1.02);
     box-shadow: var(--glow-strong);
   }
   .btn-primary::before {
-    content: '';
-    position: absolute;
-    top: 0; left: -100%;
+    content: ''; position: absolute; top: 0; left: -100%;
     width: 100%; height: 100%;
     background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
     transition: left 0.6s;
   }
-  .btn-primary:hover::before {
-    left: 100%;
-  }
+  .btn-primary:hover::before { left: 100%; }
   .btn-secondary {
     background: rgba(255, 255, 255, 0.05);
-    color: var(--text);
-    border: 2px solid var(--border);
+    color: var(--text); border: 2px solid var(--border);
     backdrop-filter: blur(10px);
   }
   .btn-secondary:hover {
     background: rgba(255, 184, 0, 0.1);
-    border-color: var(--gold);
-    color: var(--gold);
-    transform: translateY(-3px);
-    box-shadow: var(--glow);
+    border-color: var(--gold); color: var(--gold);
+    transform: translateY(-3px); box-shadow: var(--glow);
   }
 
   /* ===== بخش قهرمان ===== */
   .hero {
     padding: 80px 0 100px;
-    position: relative;
-    overflow: hidden;
+    position: relative; overflow: hidden;
   }
   .hero-content {
-    text-align: center;
-    max-width: 800px;
-    margin: 0 auto;
-    animation: fadeInUp 1s ease;
+    text-align: center; max-width: 800px;
+    margin: 0 auto; animation: fadeInUp 1s ease;
   }
   @keyframes fadeInUp {
     from { opacity: 0; transform: translateY(40px); }
@@ -239,17 +170,11 @@
   }
 
   .hero-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 8px 20px;
-    background: rgba(255, 184, 0, 0.1);
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 8px 20px; background: rgba(255, 184, 0, 0.1);
     border: 1px solid var(--border);
-    border-radius: 999px;
-    font-size: 13px;
-    font-weight: 700;
-    color: var(--gold);
-    margin-bottom: 24px;
+    border-radius: 999px; font-size: 13px;
+    font-weight: 700; color: var(--gold); margin-bottom: 24px;
     animation: pulseBadge 2s infinite;
   }
   @keyframes pulseBadge {
@@ -259,42 +184,27 @@
 
   .hero h1 {
     font-family: 'Bebas Neue', 'Vazirmatn', sans-serif;
-    font-size: 72px;
-    font-weight: 900;
-    line-height: 1.1;
-    margin-bottom: 20px;
+    font-size: 72px; font-weight: 900;
+    line-height: 1.1; margin-bottom: 20px;
     letter-spacing: 2px;
   }
   .hero h1 .gold {
     background: linear-gradient(135deg, var(--gold), var(--gold-light), var(--gold));
     background-size: 200% auto;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: shine 3s linear infinite;
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text; animation: shine 3s linear infinite;
   }
-  @keyframes shine {
-    to { background-position: 200% center; }
-  }
-  .hero h1 .white {
-    color: var(--text);
-    text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
-  }
+  @keyframes shine { to { background-position: 200% center; } }
+  .hero h1 .white { color: var(--text); text-shadow: 0 0 30px rgba(255, 255, 255, 0.3); }
 
   .hero p {
-    font-size: 17px;
-    color: var(--text-muted);
-    margin: 20px auto 32px;
-    max-width: 600px;
-    line-height: 2;
+    font-size: 17px; color: var(--text-muted);
+    margin: 20px auto 32px; max-width: 600px; line-height: 2;
   }
 
   .hero-stats {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    margin-top: 50px;
-    flex-wrap: wrap;
+    display: flex; justify-content: center; gap: 40px;
+    margin-top: 50px; flex-wrap: wrap;
   }
   .hero-stat {
     text-align: center;
@@ -305,32 +215,22 @@
   .hero-stat:nth-child(3) { animation-delay: 0.7s; }
   .hero-stat .num {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 40px;
-    font-weight: 900;
-    color: var(--gold);
-    text-shadow: var(--glow);
+    font-size: 40px; font-weight: 900;
+    color: var(--gold); text-shadow: var(--glow);
   }
-  .hero-stat .label {
-    font-size: 13px;
-    color: var(--text-muted);
-  }
+  .hero-stat .label { font-size: 13px; color: var(--text-muted); }
 
   /* ===== بخش چرا ما ===== */
-  .features {
-    padding: 80px 0;
-  }
+  .features { padding: 80px 0; }
   .section-title {
     font-family: 'Bebas Neue', 'Vazirmatn', sans-serif;
-    font-size: 42px;
-    font-weight: 900;
-    text-align: center;
-    margin-bottom: 50px;
+    font-size: 42px; font-weight: 900;
+    text-align: center; margin-bottom: 50px;
     letter-spacing: 2px;
   }
   .section-title .gold {
     background: linear-gradient(135deg, var(--gold), var(--gold-light));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
@@ -342,12 +242,9 @@
   .feature-card {
     background: linear-gradient(135deg, var(--dark-2), var(--dark-3));
     border: 1px solid var(--border);
-    border-radius: 20px;
-    padding: 32px 24px;
-    text-align: center;
-    transition: all 0.4s;
-    position: relative;
-    overflow: hidden;
+    border-radius: 20px; padding: 32px 24px;
+    text-align: center; transition: all 0.4s;
+    position: relative; overflow: hidden;
     animation: fadeInUp 0.8s ease backwards;
   }
   .feature-card:nth-child(1) { animation-delay: 0.1s; }
@@ -356,64 +253,44 @@
   .feature-card:nth-child(4) { animation-delay: 0.4s; }
 
   .feature-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
+    content: ''; position: absolute; top: 0; left: 0;
     width: 100%; height: 3px;
     background: linear-gradient(90deg, var(--gold), var(--gold-light));
-    transform: scaleX(0);
-    transition: transform 0.4s;
+    transform: scaleX(0); transition: transform 0.4s;
   }
-  .feature-card:hover::before {
-    transform: scaleX(1);
-  }
+  .feature-card:hover::before { transform: scaleX(1); }
   .feature-card:hover {
     transform: translateY(-10px);
     border-color: var(--gold);
     box-shadow: var(--glow);
   }
   .feature-icon {
-    font-size: 48px;
-    margin-bottom: 16px;
-    display: inline-block;
-    transition: transform 0.4s;
+    font-size: 48px; margin-bottom: 16px;
+    display: inline-block; transition: transform 0.4s;
   }
   .feature-card:hover .feature-icon {
     transform: scale(1.2) rotate(10deg);
   }
   .feature-card h3 {
-    font-size: 18px;
-    font-weight: 800;
-    margin-bottom: 10px;
-    color: var(--gold);
+    font-size: 18px; font-weight: 800;
+    margin-bottom: 10px; color: var(--gold);
   }
   .feature-card p {
-    font-size: 14px;
-    color: var(--text-muted);
-    line-height: 1.7;
+    font-size: 14px; color: var(--text-muted); line-height: 1.7;
   }
 
   /* ===== بخش اکانت‌ها ===== */
-  .accounts-section {
-    padding: 80px 0;
-  }
+  .accounts-section { padding: 80px 0; }
   .section-head {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 40px;
-    flex-wrap: wrap;
-    gap: 16px;
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 40px; flex-wrap: wrap; gap: 16px;
   }
   .section-head .see-all {
-    color: var(--gold);
-    font-weight: 700;
-    font-size: 14px;
-    transition: transform 0.3s;
+    color: var(--gold); font-weight: 700;
+    font-size: 14px; transition: transform 0.3s;
   }
   .section-head .see-all:hover {
-    transform: translateX(-8px);
-    text-shadow: var(--glow);
+    transform: translateX(-8px); text-shadow: var(--glow);
   }
 
   .accounts-grid {
@@ -424,10 +301,8 @@
   .account-card {
     background: linear-gradient(135deg, var(--dark-2), var(--dark-3));
     border: 1px solid var(--border);
-    border-radius: 20px;
-    overflow: hidden;
-    transition: all 0.4s;
-    position: relative;
+    border-radius: 20px; overflow: hidden;
+    transition: all 0.4s; position: relative;
     animation: fadeInUp 0.6s ease backwards;
   }
   .account-card:hover {
@@ -438,167 +313,140 @@
   .account-image {
     height: 200px;
     background: linear-gradient(135deg, var(--dark-3), var(--dark-2));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 80px;
-    position: relative;
-    overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 80px; position: relative; overflow: hidden;
+    background-size: cover; background-position: center;
   }
   .account-image::after {
-    content: '';
-    position: absolute;
-    inset: 0;
+    content: ''; position: absolute; inset: 0;
     background: linear-gradient(180deg, transparent 50%, var(--dark-2) 100%);
   }
   .account-th {
-    position: absolute;
-    top: 12px;
-    right: 12px;
+    position: absolute; top: 12px; right: 12px;
     background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-    color: var(--dark);
-    padding: 4px 12px;
-    border-radius: 999px;
-    font-size: 12px;
-    font-weight: 900;
-    z-index: 2;
+    color: var(--dark); padding: 4px 12px;
+    border-radius: 999px; font-size: 12px; font-weight: 900;
+    z-index: 2; box-shadow: var(--glow);
   }
   .account-status {
-    position: absolute;
-    top: 12px;
-    left: 12px;
-    padding: 4px 12px;
-    border-radius: 999px;
-    font-size: 11px;
-    font-weight: 800;
-    z-index: 2;
+    position: absolute; top: 12px; left: 12px;
+    padding: 4px 12px; border-radius: 999px;
+    font-size: 11px; font-weight: 800; z-index: 2;
   }
   .account-status.available {
-    background: rgba(0, 200, 83, 0.2);
-    color: var(--green);
+    background: rgba(0, 200, 83, 0.9); color: #fff;
     border: 1px solid var(--green);
   }
   .account-status.sold {
-    background: rgba(230, 57, 70, 0.2);
-    color: var(--red);
+    background: rgba(230, 57, 70, 0.9); color: #fff;
     border: 1px solid var(--red);
   }
-  .account-body {
-    padding: 20px;
+  .account-body { padding: 20px; }
+  .account-code {
+    font-size: 11px; color: var(--text-muted);
+    margin-bottom: 6px; direction: ltr; text-align: right;
+    font-family: monospace;
   }
   .account-title {
-    font-size: 17px;
-    font-weight: 800;
-    margin-bottom: 6px;
-    color: var(--text);
+    font-size: 17px; font-weight: 800;
+    margin-bottom: 6px; color: var(--text);
   }
   .account-tagline {
-    font-size: 12px;
-    color: var(--gold);
-    margin-bottom: 12px;
-    font-weight: 700;
+    font-size: 12px; color: var(--gold);
+    margin-bottom: 12px; font-weight: 700;
   }
   .account-meta {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-    margin-bottom: 16px;
+    display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px;
   }
   .meta-tag {
     background: rgba(255, 184, 0, 0.1);
     border: 1px solid var(--border);
-    padding: 4px 10px;
-    border-radius: 8px;
-    font-size: 11px;
-    color: var(--gold);
-    font-weight: 600;
+    padding: 4px 10px; border-radius: 8px;
+    font-size: 11px; color: var(--gold); font-weight: 600;
   }
   .account-price {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 28px;
-    font-weight: 900;
-    color: var(--gold);
-    text-shadow: var(--glow);
+    font-size: 28px; font-weight: 900;
+    color: var(--gold); text-shadow: var(--glow);
     margin-bottom: 12px;
   }
   .account-price .unit {
     font-family: 'Vazirmatn', sans-serif;
-    font-size: 13px;
-    color: var(--text-muted);
-    font-weight: 400;
-    margin-right: 4px;
+    font-size: 13px; color: var(--text-muted); font-weight: 400;
   }
-  .account-btns {
-    display: flex;
-    gap: 8px;
-  }
+  .account-btns { display: flex; gap: 8px; }
   .account-btns .btn {
-    flex: 1;
-    padding: 10px 16px;
-    font-size: 13px;
+    flex: 1; padding: 10px 16px; font-size: 13px;
     justify-content: center;
   }
+
+  .empty-accounts {
+    grid-column: 1 / -1;
+    text-align: center; padding: 60px 20px;
+    background: linear-gradient(135deg, var(--dark-2), var(--dark-3));
+    border: 1px dashed var(--border);
+    border-radius: 20px;
+  }
+  .empty-accounts .emoji { font-size: 70px; display: block; margin-bottom: 16px; }
+  .empty-accounts h3 { color: var(--gold); margin-bottom: 10px; font-size: 20px; }
+  .empty-accounts p { color: var(--text-muted); font-size: 14px; }
+
+  .loading-accounts {
+    grid-column: 1 / -1;
+    text-align: center; padding: 60px 20px;
+    color: var(--text-muted);
+  }
+  .spinner {
+    display: inline-block; width: 40px; height: 40px;
+    border: 4px solid var(--border);
+    border-top-color: var(--gold);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin-bottom: 16px;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
 
   /* ===== فوتر ===== */
   footer {
     background: var(--dark-2);
     border-top: 1px solid var(--border);
     padding: 60px 0 30px;
-    margin-top: 80px;
-    position: relative;
-    z-index: 2;
+    margin-top: 0;
+    position: relative; z-index: 2;
   }
   .footer-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 30px;
-    margin-bottom: 30px;
+    gap: 30px; margin-bottom: 30px;
   }
   .footer-col h4 {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 20px;
-    color: var(--gold);
-    margin-bottom: 16px;
-    letter-spacing: 1px;
+    font-size: 20px; color: var(--gold);
+    margin-bottom: 16px; letter-spacing: 1px;
   }
   .footer-col p, .footer-col li {
-    font-size: 13px;
-    color: var(--text-muted);
-    line-height: 2;
+    font-size: 13px; color: var(--text-muted); line-height: 2;
   }
   .footer-col ul { list-style: none; }
-  .footer-col a {
-    color: var(--text-muted);
-    transition: color 0.3s;
-  }
+  .footer-col a { color: var(--text-muted); transition: color 0.3s; }
   .footer-col a:hover { color: var(--gold); }
   .footer-rubika {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
+    display: inline-flex; align-items: center; gap: 8px;
     background: rgba(255, 184, 0, 0.1);
     border: 1px solid var(--border);
-    padding: 8px 16px;
-    border-radius: 10px;
-    color: var(--gold);
-    font-weight: 700;
-    font-size: 13px;
-    margin-top: 8px;
-    transition: all 0.3s;
+    padding: 8px 16px; border-radius: 10px;
+    color: var(--gold); font-weight: 700; font-size: 13px;
+    margin-top: 8px; transition: all 0.3s;
   }
   .footer-rubika:hover {
-    background: rgba(255, 184, 0, 0.2);
-    box-shadow: var(--glow);
+    background: rgba(255, 184, 0, 0.2); box-shadow: var(--glow);
   }
   .footer-bottom {
     border-top: 1px solid var(--border);
-    padding-top: 20px;
-    text-align: center;
-    font-size: 12px;
-    color: var(--text-muted);
+    padding-top: 20px; text-align: center;
+    font-size: 12px; color: var(--text-muted);
   }
 
-  /* ===== موبایل ===== */
   @media (max-width: 768px) {
     nav { display: none; }
     .menu-btn { display: block; }
@@ -608,14 +456,13 @@
     .hero-stats { gap: 20px; }
     .hero-stat .num { font-size: 28px; }
     .logo-title { font-size: 20px; }
-    .logo-icon { width: 40px; height: 40px; font-size: 22px; }
+    .logo-icon { width: 40px; height: 40px; font-size: 13px; }
     .accounts-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
 <body>
 
-<!-- ذرات شناور -->
 <div class="floating-particles">
   <span class="particle">💎</span>
   <span class="particle">⚔️</span>
@@ -627,7 +474,6 @@
   <span class="particle">🛡️</span>
 </div>
 
-<!-- هدر -->
 <header>
   <div class="container header-inner">
     <a href="index.html" class="logo">
@@ -647,7 +493,6 @@
   </div>
 </header>
 
-<!-- بخش قهرمان -->
 <section class="hero">
   <div class="container hero-content">
     <div class="hero-badge">🔥 نقد و اقساط کاملا تضمینی 🔥</div>
@@ -674,14 +519,13 @@
         <div class="label">تجربه</div>
       </div>
       <div class="hero-stat">
-        <div class="num">۹۸٪</div>
+        <div class="num">۱۰۰٪</div>
         <div class="label">رضایت مشتری</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- بخش چرا ما -->
 <section class="features" id="features">
   <div class="container">
     <h2 class="section-title">چرا <span class="gold">آرتی ایکس شاپ</span>؟</h2>
@@ -710,7 +554,6 @@
   </div>
 </section>
 
-<!-- بخش آخرین اکانت‌ها -->
 <section class="accounts-section">
   <div class="container">
     <div class="section-head">
@@ -718,77 +561,14 @@
       <a href="accounts.html" class="see-all">مشاهده همه ←</a>
     </div>
     <div id="latestAccounts" class="accounts-grid">
-      <!-- اکانت‌های نمونه -->
-      <div class="account-card">
-        <div class="account-image">
-          <span>🏰</span>
-          <span class="account-th">TH 10</span>
-          <span class="account-status available">✅ موجود</span>
-        </div>
-        <div class="account-body">
-          <h3 class="account-title">اکانت کلش آف کلنز</h3>
-          <div class="account-tagline">🔥 نقد و اقساط تضمینی 🔥</div>
-          <div class="account-meta">
-            <span class="meta-tag">لول بیلدر: ۱۰</span>
-            <span class="meta-tag">تغییر نام: ۱۵۰۰</span>
-          </div>
-          <div class="account-price">
-            ۵۲۰۰ <span class="unit">تومان</span>
-          </div>
-          <div class="account-btns">
-            <a href="https://rubika.ir/ADMIN_RTX" class="btn btn-primary" target="_blank">📱 خرید</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="account-card">
-        <div class="account-image">
-          <span>🏰</span>
-          <span class="account-th">TH 12</span>
-          <span class="account-status available">✅ موجود</span>
-        </div>
-        <div class="account-body">
-          <h3 class="account-title">اکانت کلش آف کلنز</h3>
-          <div class="account-tagline">🔥 نقد و اقساط تضمینی 🔥</div>
-          <div class="account-meta">
-            <span class="meta-tag">لول بیلدر: ۱۲</span>
-            <span class="meta-tag">هیروها: ۵۰+</span>
-          </div>
-          <div class="account-price">
-            ۸۵۰۰ <span class="unit">تومان</span>
-          </div>
-          <div class="account-btns">
-            <a href="https://rubika.ir/ADMIN_RTX" class="btn btn-primary" target="_blank">📱 خرید</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="account-card">
-        <div class="account-image">
-          <span>🏰</span>
-          <span class="account-th">TH 15</span>
-          <span class="account-status available">✅ موجود</span>
-        </div>
-        <div class="account-body">
-          <h3 class="account-title">اکانت کلش آف کلنز</h3>
-          <div class="account-tagline">🔥 نقد و اقساط تضمینی 🔥</div>
-          <div class="account-meta">
-            <span class="meta-tag">لول بیلدر: ۱۵</span>
-            <span class="meta-tag">مکس</span>
-          </div>
-          <div class="account-price">
-            ۱۵۰۰۰ <span class="unit">تومان</span>
-          </div>
-          <div class="account-btns">
-            <a href="https://rubika.ir/ADMIN_RTX" class="btn btn-primary" target="_blank">📱 خرید</a>
-          </div>
-        </div>
+      <div class="loading-accounts">
+        <div class="spinner"></div>
+        <p>در حال بارگذاری اکانت‌ها...</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- فوتر -->
 <footer id="contact">
   <div class="container">
     <div class="footer-grid">
@@ -824,7 +604,84 @@
   </div>
 </footer>
 
-<script>
+<script type="module">
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
+
+const SUPABASE_URL = 'https://ifsjhzhogxthighbcyyh.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imlmc2poemhvZ3h0aWhnaGJjeXloIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTAwMDI5ODMsImV4cCI6MjEwNTU3ODk4M30.9r2IWXK2G9GOAeWhS1UgDEC8IhAgvZcWgM6-YusbBYc';
+
+const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+
+function escapeHtml(str) {
+  return String(str || '').replace(/[&<>"']/g, m => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+  }[m]));
+}
+
+async function loadLatestAccounts() {
+  const container = document.getElementById('latestAccounts');
+  const { data, error } = await supabase
+    .from('accounts')
+    .select('*')
+    .order('created_at', { ascending: false })
+    .limit(6);
+
+  if (error) {
+    console.error(error);
+    container.innerHTML = `
+      <div class="empty-accounts">
+        <span class="emoji">⚠️</span>
+        <h3>خطا در بارگذاری</h3>
+        <p>لطفاً بعداً دوباره تلاش کنید</p>
+      </div>
+    `;
+    return;
+  }
+
+  if (!data || data.length === 0) {
+    container.innerHTML = `
+      <div class="empty-accounts">
+        <span class="emoji">🎮</span>
+        <h3>هنوز اکانتی اضافه نشده</h3>
+        <p>به‌زودی اکانت‌های جدید اینجا نمایش داده میشن</p>
+      </div>
+    `;
+    return;
+  }
+
+  container.innerHTML = data.map((acc, i) => `
+    <div class="account-card" style="animation-delay: ${i * 0.1}s">
+      <div class="account-image" ${acc.image ? `style="background-image: url('${escapeHtml(acc.image)}')"` : ''}>
+        ${!acc.image ? '<span>🏰</span>' : ''}
+        <span class="account-th">TH ${acc.townhall}</span>
+        <span class="account-status ${acc.status === 'available' ? 'available' : 'sold'}">
+          ${acc.status === 'available' ? '✅ موجود' : '❌ فروش رفته'}
+        </span>
+      </div>
+      <div class="account-body">
+        <div class="account-code">#کد ${escapeHtml(acc.code)}</div>
+        <h3 class="account-title">${escapeHtml(acc.title)}</h3>
+        <div class="account-tagline">${escapeHtml(acc.tagline)}</div>
+        <div class="account-meta">
+          ${acc.builder_level ? `<span class="meta-tag">🏗 لول بیلدر: ${acc.builder_level}</span>` : ''}
+          ${acc.name_change ? `<span class="meta-tag">✏️ تغییر نام: ${acc.name_change}</span>` : ''}
+        </div>
+        <div class="account-price">
+          ${Number(acc.price).toLocaleString('fa-IR')} <span class="unit">تومان</span>
+        </div>
+        <div class="account-btns">
+          ${acc.status === 'available'
+            ? `<a href="https://rubika.ir/ADMIN_RTX" class="btn btn-primary" target="_blank">📱 خرید در روبیکا</a>`
+            : `<button class="btn btn-secondary" disabled>فروش رفته</button>`
+          }
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+loadLatestAccounts();
+
 function toggleMenu() {
   const nav = document.querySelector('nav');
   nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';

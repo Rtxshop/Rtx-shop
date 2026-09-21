@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ورود به پنل مدیریت | آرتی ایکس شاپ</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #FFB800;
+    --gold-dark: #E5A500;
+    --gold-light: #FFD466;
+    --dark: #0F0F1E;
+    --dark-2: #1A1A2E;
+    --dark-3: #252540;
+    --text: #F8FAFC;
+    --text-muted: #94A3B8;
+    --border: rgba(255, 184, 0, 0.2);
+    --glow: 0 0 20px rgba(255, 184, 0, 0.4);
+    --glow-strong: 0 0 40px rgba(255, 184, 0, 0.6);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Vazirmatn', sans-serif;
+    background: var(--dark);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    overflow: hidden;
+    background-image:
+      radial-gradient(circle at 20% 10%, rgba(157, 78, 221, 0.15) 0%, transparent 40%),
+      radial-gradient(circle at 80% 80%, rgba(77, 166, 255, 0.15) 0%, transparent 40%),
+      radial-gradient(circle at 50% 50%, rgba(255, 184, 0, 0.08) 0%, transparent 50%);
+  }
+
+  /* ذرات شناور */
+  .floating-particles {
+    position: fixed; inset: 0; pointer-events: none; z-index: 1; overflow: hidden;
+  }
+  .particle {
+    position: absolute; font-size: 20px; opacity: 0.3;
+    animation: floatParticle 15s infinite ease-in-out;
+  }
+  .particle:nth-child(1) { left: 10%; top: 20%; }
+  .particle:nth-child(2) { left: 80%; top: 30%; animation-delay: 2s; }
+  .particle:nth-child(3) { left: 30%; top: 70%; animation-delay: 4s; }
+  .particle:nth-child(4) { left: 70%; top: 80%; animation-delay: 6s; }
+  .particle:nth-child(5) { left: 50%; top: 15%; animation-delay: 8s; }
+  @keyframes floatParticle {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    50% { transform: translate(30px, -50px) rotate(180deg); }
+  }
+
+  .login-box {
+    background: linear-gradient(135deg, rgba(26, 26, 46, 0.95), rgba(37, 37, 64, 0.95));
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 48px 36px;
+    width: 100%;
+    max-width: 420px;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5), var(--glow);
+    position: relative;
+    z-index: 2;
+    animation: slideUp 0.6s ease;
+  }
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .login-logo {
+    width: 80px;
+    height: 80px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px;
+    color: var(--dark);
+    font-weight: 900;
+    margin: 0 auto 24px;
+    box-shadow: var(--glow-strong);
+    animation: pulseGlow 2s infinite;
+  }
+  @keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 20px rgba(255, 184, 0, 0.4); }
+    50% { box-shadow: 0 0 40px rgba(255, 184, 0, 0.8); }
+  }
+
+  .login-box h1 {
+    font-family: 'Bebas Neue', 'Vazirmatn', sans-serif;
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 8px;
+    letter-spacing: 2px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .login-box .subtitle {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 13px;
+    margin-bottom: 32px;
+  }
+
+  .field { margin-bottom: 18px; }
+  .field label {
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+  .field input {
+    width: 100%;
+    padding: 14px 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    color: var(--text);
+    font-family: inherit;
+    font-size: 15px;
+    transition: all 0.3s;
+    direction: ltr;
+  }
+  .field input:focus {
+    outline: none;
+    border-color: var(--gold);
+    background: rgba(255, 184, 0, 0.05);
+    box-shadow: 0 0 0 4px rgba(255, 184, 0, 0.15);
+  }
+
+  .btn {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    border: none;
+    border-radius: 12px;
+    color: var(--dark);
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 900;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 8px;
+    position: relative;
+    overflow: hidden;
+  }
+  .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(255, 184, 0, 0.4);
+  }
+  .btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  .error {
+    background: rgba(230, 57, 70, 0.15);
+    border: 1px solid rgba(230, 57, 70, 0.5);
+    color: #FF8A8A;
+    padding: 12px 16px;
+    border-radius: 10px;
+    font-size: 13px;
+    margin-bottom: 20px;
+    text-align: center;
+    display: none;
+    animation: shake 0.4s;
+  }
+  .error.show { display: block; }
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-8px); }
+    75% { transform: translateX(8px); }
+  }
+
+  .spinner {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(15, 15, 30, 0.3);
+    border-top-color: var(--dark);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    vertical-align: middle;
+    margin-left: 8px;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .back-link {
+    display: block;
+    text-align: center;
+    margin-top: 24px;
+    color: var(--text-muted);
+    font-size: 13px;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .back-link:hover { color: var(--gold); }
+</style>
+</head>
+<body>
+
+<div class="floating-particles">
+  <span class="particle">💎</span>
+  <span class="particle">⚔️</span>
+  <span class="particle">🏰</span>
+  <span class="particle">👑</span>
+  <span class="particle">🔥</span>
+</div>
+
+<div class="login-box">
+  <div class="login-logo">RTX</div>
+  <h1>ورود به پنل مدیریت</h1>
+  <p class="subtitle">آرتی ایکس شاپ - پنل مدیریت</p>
+
+  <div class="error" id="errorBox"></div>
+
+  <form id="loginForm">
+    <div class="field">
+      <label>👤 نام کاربری</label>
+      <input type="text" id="username" required placeholder="admin" autocomplete="username">
+    </div>
+    <div class="field">
+      <label>🔑 رمز عبور</label>
+      <input type="password" id="password" required placeholder="••••••••" autocomplete="current-password">
+    </div>
+    <button type="submit" class="btn" id="loginBtn">🚀 ورود به پنل</button>
+  </form>
+
+  <a href="../index.html" class="back-link">← بازگشت به سایت</a>
+</div>
+
+<script>
+  // ⚠️ رمز و نام کاربری رو اینجا تغییر بده
+  const VALID_USERNAME = 'admin';
+  const VALID_PASSWORD = 'RTX@1404';
+
+  const form = document.getElementById('loginForm');
+  const usernameInput = document.getElementById('username');
+  const passwordInput = document.getElementById('password');
+  const loginBtn = document.getElementById('loginBtn');
+  const errorBox = document.getElementById('errorBox');
+
+  // اگه قبلاً لاگین کرده، مستقیم بره پنل
+  if (sessionStorage.getItem('rtx_logged_in') === 'true') {
+    window.location.href = 'panel.html';
+  }
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    errorBox.classList.remove('show');
+    loginBtn.disabled = true;
+    loginBtn.innerHTML = 'در حال ورود<span class="spinner"></span>';
+
+    setTimeout(() => {
+      const u = usernameInput.value.trim();
+      const p = passwordInput.value;
+
+      if (u === VALID_USERNAME && p === VALID_PASSWORD) {
+        sessionStorage.setItem('rtx_logged_in', 'true');
+        window.location.href = 'panel.html';
+      } else {
+        errorBox.textContent = '❌ نام کاربری یا رمز عبور اشتباه است';
+        errorBox.classList.add('show');
+        loginBtn.disabled = false;
+        loginBtn.textContent = '🚀 ورود به پنل';
+      }
+    }, 600);
+  });
+</script>
+
+</body>
+</html>

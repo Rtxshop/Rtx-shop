@@ -170,8 +170,6 @@
     text-align: center;
     display: none;
     animation: shake 0.4s;
-    word-wrap: break-word;
-    line-height: 1.6;
   }
   .error.show { display: block; }
   @keyframes shake {
@@ -222,8 +220,8 @@
 
   <form id="loginForm">
     <div class="field">
-      <label>👤 ایمیل</label>
-      <input type="email" id="email" required placeholder="rtx@gmail.com" autocomplete="username" value="rtx@gmail.com">
+      <label>👤 نام کاربری</label>
+      <input type="text" id="username" required placeholder="admin" autocomplete="username">
     </div>
     <div class="field">
       <label>🔑 رمز عبور</label>
@@ -235,53 +233,43 @@
   <a href="../index.html" class="back-link">← بازگشت به سایت</a>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
 <script>
-// ===== اطلاعات اتصال Supabase =====
-const SUPABASE_URL = 'https://ifsjhzhogxthighbcyyh.supabase.co';
-const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imlmc2poemhvZ3h0aWhnaGJjeXloIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTAwMDI5ODMsImV4cCI6MjEwNTU3ODk4M30.9r2IWXK2G9GOAeWhS1UgDEC8IhAgvZcWgM6-YusbBYc';
+  // ⚠️ رمز و نام کاربری رو اینجا تغییر بده
+  const VALID_USERNAME = 'admin';
+  const VALID_PASSWORD = 'RTX@1404';
 
-const { createClient } = supabase;
-const supabaseClient = createClient(SUPABASE_URL, SUPABASE_KEY);
+  const form = document.getElementById('loginForm');
+  const usernameInput = document.getElementById('username');
+  const passwordInput = document.getElementById('password');
+  const loginBtn = document.getElementById('loginBtn');
+  const errorBox = document.getElementById('errorBox');
 
-const form = document.getElementById('loginForm');
-const emailInput = document.getElementById('email');
-const passwordInput = document.getElementById('password');
-const loginBtn = document.getElementById('loginBtn');
-const errorBox = document.getElementById('errorBox');
-
-form.addEventListener('submit', async (e) => {
-  e.preventDefault();
-  errorBox.classList.remove('show');
-  loginBtn.disabled = true;
-  loginBtn.innerHTML = 'در حال ورود<span class="spinner"></span>';
-
-  try {
-    const { data, error } = await supabaseClient.auth.signInWithPassword({
-      email: emailInput.value.trim(),
-      password: passwordInput.value
-    });
-
-    if (error) {
-      console.error('Login error:', error);
-      errorBox.textContent = '❌ خطا: ' + error.message;
-      errorBox.classList.add('show');
-      loginBtn.disabled = false;
-      loginBtn.textContent = '🚀 ورود به پنل';
-      return;
-    }
-
-    // ورود موفق
+  // اگه قبلاً لاگین کرده، مستقیم بره پنل
+  if (sessionStorage.getItem('rtx_logged_in') === 'true') {
     window.location.href = 'panel.html';
-  } catch (err) {
-    console.error('Catch error:', err);
-    errorBox.textContent = '❌ خطای غیرمنتظره: ' + err.message;
-    errorBox.classList.add('show');
-    loginBtn.disabled = false;
-    loginBtn.textContent = '🚀 ورود به پنل';
   }
-});
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    errorBox.classList.remove('show');
+    loginBtn.disabled = true;
+    loginBtn.innerHTML = 'در حال ورود<span class="spinner"></span>';
+
+    setTimeout(() => {
+      const u = usernameInput.value.trim();
+      const p = passwordInput.value;
+
+      if (u === VALID_USERNAME && p === VALID_PASSWORD) {
+        sessionStorage.setItem('rtx_logged_in', 'true');
+        window.location.href = 'panel.html';
+      } else {
+        errorBox.textContent = '❌ نام کاربری یا رمز عبور اشتباه است';
+        errorBox.classList.add('show');
+        loginBtn.disabled = false;
+        loginBtn.textContent = '🚀 ورود به پنل';
+      }
+    }, 600);
+  });
 </script>
 
 </body>

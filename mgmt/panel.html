@@ -495,7 +495,7 @@
   </div>
   <div class="header-actions">
     <a href="../accounts.html" class="nav-btn" target="_blank">👁 مشاهده سایت</a>
-    <a href="index.html" class="nav-btn" onclick="logout(event)">🚪 خروج</a>
+    <button class="logout-btn" onclick="logout()">🚪 خروج</button>
   </div>
 </header>
 
@@ -715,24 +715,29 @@
   </div>
 </div>
 
-<script type="module">
-import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
+<!-- Supabase Library -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
+<script>
+// ===== اطلاعات اتصال Supabase =====
 const SUPABASE_URL = 'https://ifsjhzhogxthighbcyyh.supabase.co';
 const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imlmc2poemhvZ3h0aWhnaGJjeXloIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTAwMDI5ODMsImV4cCI6MjEwNTU3ODk4M30.9r2IWXK2G9GOAeWhS1UgDEC8IhAgvZcWgM6-YusbBYc';
 
-const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+const { createClient } = supabase;
+const supabaseClient = createClient(SUPABASE_URL, SUPABASE_KEY);
 
+// ===== بررسی لاگین =====
 if (sessionStorage.getItem('rtx_logged_in') !== 'true') {
   window.location.href = 'index.html';
 }
 
-window.logout = function(e) {
-  e.preventDefault();
+// ===== خروج =====
+function logout() {
   sessionStorage.removeItem('rtx_logged_in');
   window.location.href = 'index.html';
-};
+}
 
+// ===== تغییر تب =====
 document.querySelectorAll('.tab').forEach(tab => {
   tab.addEventListener('click', () => {
     document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
@@ -775,11 +780,12 @@ window.previewEditImage = function(input) {
   }
 };
 
+// ===== آپلود عکس به Supabase Storage =====
 async function uploadImage(file) {
   const ext = file.name.split('.').pop();
   const fileName = `${Date.now()}-${Math.random().toString(36).substring(7)}.${ext}`;
 
-  const { data, error } = await supabase.storage
+  const { data, error } = await supabaseClient.storage
     .from('account-images')
     .upload(fileName, file);
 
@@ -788,13 +794,14 @@ async function uploadImage(file) {
     throw new Error('خطا در آپلود عکس: ' + error.message);
   }
 
-  const { data: urlData } = supabase.storage
+  const { data: urlData } = supabaseClient.storage
     .from('account-images')
     .getPublicUrl(fileName);
 
   return urlData.publicUrl;
 }
 
+// ===== افزودن اکانت =====
 document.getElementById('accountForm').addEventListener('submit', async (e) => {
   e.preventDefault();
   const btn = document.getElementById('submitBtn');
@@ -808,7 +815,7 @@ document.getElementById('accountForm').addEventListener('submit', async (e) => {
       imageUrl = await uploadImage(imageFile);
     }
 
-    const { error } = await supabase.from('accounts').insert({
+    const { error } = await supabaseClient.from('accounts').insert({
       title: document.getElementById('fTitle').value.trim(),
       tagline: document.getElementById('fTagline').value.trim(),
       townhall: parseInt(document.getElementById('fTownhall').value),
@@ -838,13 +845,14 @@ document.getElementById('accountForm').addEventListener('submit', async (e) => {
   btn.textContent = '📤 ثبت اکانت';
 });
 
+// ===== لیست اکانت‌ها =====
 let allAccounts = [];
 
 async function loadAccounts() {
   const list = document.getElementById('accountsList');
   list.innerHTML = '<div class="empty"><div class="spinner"></div><p>در حال بارگذاری...</p></div>';
 
-  const { data, error } = await supabase
+  const { data, error } = await supabaseClient
     .from('accounts')
     .select('*')
     .order('created_at', { ascending: false });
@@ -891,7 +899,7 @@ function escapeHtml(str) {
 }
 
 async function loadStats() {
-  const { data } = await supabase.from('accounts').select('status');
+  const { data } = await supabaseClient.from('accounts').select('status');
   if (!data) return;
 
   const total = data.length;
@@ -939,7 +947,7 @@ document.getElementById('editForm').addEventListener('submit', async (e) => {
       imageUrl = await uploadImage(imageFile);
     }
 
-    const { error } = await supabase.from('accounts').update({
+    const { error } = await supabaseClient.from('accounts').update({
       title: document.getElementById('efTitle').value.trim(),
       tagline: document.getElementById('efTagline').value.trim(),
       townhall: parseInt(document.getElementById('efTownhall').value),
@@ -967,7 +975,7 @@ document.getElementById('editForm').addEventListener('submit', async (e) => {
 
 window.deleteAccount = async function(id) {
   if (!confirm('آیا از حذف این اکانت مطمئن هستید؟')) return;
-  const { error } = await supabase.from('accounts').delete().eq('id', id);
+  const { error } = await supabaseClient.from('accounts').delete().eq('id', id);
   if (error) {
     alert('خطا در حذف: ' + error.message);
   } else {

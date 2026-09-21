@@ -753,7 +753,7 @@ function showMsg(elId, text, type = 'success') {
   const el = document.getElementById(elId);
   el.textContent = text;
   el.className = 'msg show ' + type;
-  setTimeout(() => { el.classList.remove('show'); }, 5000);
+  setTimeout(() => { el.classList.remove('show'); }, 6000);
 }
 
 window.previewImage = function(input) {
@@ -782,9 +782,8 @@ window.previewEditImage = function(input) {
 
 // ===== آپلود عکس به Supabase Storage =====
 async function uploadImage(file) {
-  // اسم فایل رو خودمون می‌سازیم (فقط حروف و اعداد انگلیسی)
   const ext = file.name.split('.').pop().toLowerCase();
-  const fileName = `img-${Date.now()}-${Math.random().toString(36).substring(2, 8)}.${ext}`;
+  const fileName = 'img-' + Date.now() + '-' + Math.random().toString(36).substring(2, 8) + '.' + ext;
 
   const { data, error } = await supabaseClient.storage
     .from('account-images')

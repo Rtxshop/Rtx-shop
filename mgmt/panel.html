@@ -1,1 +1,1017 @@
 
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>پنل مدیریت | آرتی ایکس شاپ</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #FFB800;
+    --gold-dark: #E5A500;
+    --gold-light: #FFD466;
+    --blue: #4DA6FF;
+    --green: #00C853;
+    --red: #E63946;
+    --dark: #0F0F1E;
+    --dark-2: #1A1A2E;
+    --dark-3: #252540;
+    --text: #F8FAFC;
+    --text-muted: #94A3B8;
+    --border: rgba(255, 184, 0, 0.2);
+    --glow: 0 0 20px rgba(255, 184, 0, 0.4);
+    --glow-strong: 0 0 40px rgba(255, 184, 0, 0.6);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Vazirmatn', sans-serif;
+    background: var(--dark);
+    color: var(--text);
+    min-height: 100vh;
+    line-height: 1.8;
+    background-image:
+      radial-gradient(circle at 20% 10%, rgba(157, 78, 221, 0.1) 0%, transparent 40%),
+      radial-gradient(circle at 80% 80%, rgba(77, 166, 255, 0.1) 0%, transparent 40%);
+  }
+
+  /* هدر */
+  header {
+    background: rgba(15, 15, 30, 0.95);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Bebas Neue', sans-serif;
+  }
+  .logo-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--dark);
+    font-size: 14px;
+    font-weight: 900;
+    box-shadow: var(--glow);
+  }
+  .logo span {
+    font-size: 20px;
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: 1px;
+  }
+  .header-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .nav-btn {
+    background: rgba(255, 184, 0, 0.1);
+    color: var(--gold);
+    border: 1px solid var(--border);
+    padding: 8px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+  .nav-btn:hover {
+    background: rgba(255, 184, 0, 0.2);
+    box-shadow: var(--glow);
+  }
+  .logout-btn {
+    background: rgba(230, 57, 70, 0.15);
+    color: #FF8A8A;
+    border: 1px solid rgba(230, 57, 70, 0.5);
+    padding: 8px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    transition: all 0.3s;
+  }
+  .logout-btn:hover {
+    background: rgba(230, 57, 70, 0.25);
+  }
+
+  .container { max-width: 1200px; margin: 0 auto; padding: 24px; }
+
+  /* تب‌ها */
+  .tabs {
+    display: flex;
+    gap: 8px;
+    background: var(--dark-2);
+    padding: 6px;
+    border-radius: 14px;
+    margin-bottom: 24px;
+    border: 1px solid var(--border);
+  }
+  .tab {
+    flex: 1;
+    padding: 12px;
+    text-align: center;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 800;
+    font-size: 14px;
+    color: var(--text-muted);
+    border: none;
+    background: transparent;
+    transition: all 0.3s;
+  }
+  .tab.active {
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    color: var(--dark);
+    box-shadow: var(--glow);
+  }
+
+  /* کارت */
+  .card {
+    background: linear-gradient(135deg, var(--dark-2), var(--dark-3));
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 28px;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  }
+  .card h2 {
+    font-family: 'Bebas Neue', 'Vazirmatn', sans-serif;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: var(--gold);
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  /* فرم */
+  .field { margin-bottom: 16px; }
+  .field label {
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+  .field input,
+  .field textarea,
+  .field select {
+    width: 100%;
+    padding: 12px 14px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 14px;
+    color: var(--text);
+    transition: all 0.3s;
+  }
+  .field input:focus,
+  .field textarea:focus,
+  .field select:focus {
+    outline: none;
+    border-color: var(--gold);
+    background: rgba(255, 184, 0, 0.05);
+    box-shadow: 0 0 0 4px rgba(255, 184, 0, 0.15);
+  }
+  .field input::placeholder,
+  .field textarea::placeholder { color: #475569; }
+  .field select option { background: var(--dark-2); color: var(--text); }
+  .field textarea { min-height: 100px; resize: vertical; }
+
+  .row-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  .row-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 14px;
+  }
+
+  /* آپلود عکس */
+  .upload-box {
+    border: 2px dashed var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    background: rgba(255, 255, 255, 0.02);
+  }
+  .upload-box:hover {
+    border-color: var(--gold);
+    background: rgba(255, 184, 0, 0.05);
+  }
+  .upload-box .icon {
+    font-size: 40px;
+    margin-bottom: 8px;
+    display: block;
+  }
+  .upload-box .text {
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+  .upload-box input[type="file"] { display: none; }
+  .preview-img {
+    max-width: 200px;
+    max-height: 200px;
+    border-radius: 12px;
+    margin: 12px auto 0;
+    display: block;
+    border: 2px solid var(--border);
+  }
+
+  /* دکمه‌ها */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 12px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-decoration: none;
+  }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    color: var(--dark);
+    box-shadow: 0 6px 20px rgba(255, 184, 0, 0.3);
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--glow-strong);
+  }
+  .btn-primary:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+  }
+  .btn-danger {
+    background: rgba(230, 57, 70, 0.15);
+    color: #FF8A8A;
+    border: 1px solid rgba(230, 57, 70, 0.5);
+  }
+  .btn-danger:hover { background: rgba(230, 57, 70, 0.25); }
+  .btn-edit {
+    background: rgba(77, 166, 255, 0.15);
+    color: var(--blue);
+    border: 1px solid rgba(77, 166, 255, 0.5);
+  }
+  .btn-edit:hover { background: rgba(77, 166, 255, 0.25); }
+
+  /* پیام */
+  .msg {
+    padding: 12px 16px;
+    border-radius: 10px;
+    margin-bottom: 16px;
+    font-size: 14px;
+    font-weight: 600;
+    display: none;
+  }
+  .msg.show { display: block; animation: slideDown 0.3s; }
+  @keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .msg.success {
+    background: rgba(0, 200, 83, 0.15);
+    color: #4ADE80;
+    border: 1px solid rgba(0, 200, 83, 0.5);
+  }
+  .msg.error {
+    background: rgba(230, 57, 70, 0.15);
+    color: #FF8A8A;
+    border: 1px solid rgba(230, 57, 70, 0.5);
+  }
+
+  /* لیست اکانت‌ها */
+  .accounts-list {
+    display: grid;
+    gap: 12px;
+  }
+  .account-row {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 16px;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    transition: all 0.3s;
+    flex-wrap: wrap;
+  }
+  .account-row:hover {
+    border-color: var(--gold);
+    background: rgba(255, 184, 0, 0.05);
+  }
+  .account-row .thumb {
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+    background: var(--dark-3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    flex-shrink: 0;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .account-row .thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .account-row .info {
+    flex: 1;
+    min-width: 200px;
+  }
+  .account-row h3 {
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+  .account-row .meta {
+    font-size: 12px;
+    color: var(--text-muted);
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .account-row .meta span {
+    background: rgba(255, 184, 0, 0.1);
+    padding: 2px 8px;
+    border-radius: 6px;
+    color: var(--gold);
+  }
+  .status-badge {
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 800;
+  }
+  .status-available {
+    background: rgba(0, 200, 83, 0.15);
+    color: var(--green);
+    border: 1px solid var(--green);
+  }
+  .status-sold {
+    background: rgba(230, 57, 70, 0.15);
+    color: var(--red);
+    border: 1px solid var(--red);
+  }
+  .account-actions {
+    display: flex;
+    gap: 6px;
+    flex-shrink: 0;
+  }
+  .account-actions button {
+    padding: 8px 12px;
+    font-size: 12px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 700;
+    transition: all 0.2s;
+  }
+
+  /* آمار */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .stat-box {
+    background: linear-gradient(135deg, var(--dark-2), var(--dark-3));
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 20px;
+    text-align: center;
+  }
+  .stat-box .num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px;
+    font-weight: 900;
+    color: var(--gold);
+    text-shadow: var(--glow);
+  }
+  .stat-box .label {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+
+  .empty {
+    text-align: center;
+    padding: 50px 20px;
+    color: var(--text-muted);
+  }
+  .empty .emoji { font-size: 60px; display: block; margin-bottom: 12px; }
+
+  .spinner {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(15, 15, 30, 0.3);
+    border-top-color: var(--dark);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    vertical-align: middle;
+    margin-left: 8px;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* مودال ویرایش */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(8px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    z-index: 1000;
+    overflow-y: auto;
+  }
+  .modal-overlay.active { display: flex; }
+  .modal {
+    background: linear-gradient(135deg, var(--dark-2), var(--dark-3));
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 28px;
+    max-width: 600px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    margin: auto;
+  }
+
+  .hidden { display: none !important; }
+
+  @media (max-width: 768px) {
+    .container { padding: 16px; }
+    .card { padding: 20px; }
+    .row-2, .row-3 { grid-template-columns: 1fr; }
+    .account-row { flex-direction: column; align-items: flex-start; }
+    .account-actions { width: 100%; }
+    .account-actions button { flex: 1; }
+    .logo span { font-size: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <div class="logo-icon">RTX</div>
+    <span>پنل مدیریت آرتی ایکس</span>
+  </div>
+  <div class="header-actions">
+    <a href="../accounts.html" class="nav-btn" target="_blank">👁 مشاهده سایت</a>
+    <a href="index.html" class="nav-btn" onclick="logout(event)">🚪 خروج</a>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- آمار -->
+  <div class="stats-grid">
+    <div class="stat-box">
+      <div class="num" id="totalCount">۰</div>
+      <div class="label">📊 مجموع اکانت‌ها</div>
+    </div>
+    <div class="stat-box">
+      <div class="num" id="availableCount">۰</div>
+      <div class="label">✅ موجود</div>
+    </div>
+    <div class="stat-box">
+      <div class="num" id="soldCount">۰</div>
+      <div class="label">❌ فروش رفته</div>
+    </div>
+  </div>
+
+  <!-- تب‌ها -->
+  <div class="tabs">
+    <button class="tab active" data-tab="add">➕ افزودن اکانت</button>
+    <button class="tab" data-tab="list">📋 لیست اکانت‌ها</button>
+  </div>
+
+  <!-- تب افزودن -->
+  <div id="tab-add">
+    <div class="card">
+      <h2>➕ افزودن اکانت جدید</h2>
+      <div class="msg" id="addMsg"></div>
+
+      <form id="accountForm">
+        <div class="row-2">
+          <div class="field">
+            <label>عنوان اکانت *</label>
+            <input type="text" id="fTitle" required value="اکانت کلش آف کلنز" placeholder="اکانت کلش آف کلنز">
+          </div>
+          <div class="field">
+            <label>شعار / تگلاین</label>
+            <input type="text" id="fTagline" value="🔥 نقد و اقساط کاملا تضمینی 🔥" placeholder="🔥 نقد و اقساط تضمینی 🔥">
+          </div>
+        </div>
+
+        <div class="row-3">
+          <div class="field">
+            <label>🏰 تاون هال *</label>
+            <select id="fTownhall" required>
+              <option value="">انتخاب...</option>
+              <option value="1">تاون هال ۱</option>
+              <option value="2">تاون هال ۲</option>
+              <option value="3">تاون هال ۳</option>
+              <option value="4">تاون هال ۴</option>
+              <option value="5">تاون هال ۵</option>
+              <option value="6">تاون هال ۶</option>
+              <option value="7">تاون هال ۷</option>
+              <option value="8">تاون هال ۸</option>
+              <option value="9">تاون هال ۹</option>
+              <option value="10">تاون هال ۱۰</option>
+              <option value="11">تاون هال ۱۱</option>
+              <option value="12">تاون هال ۱۲</option>
+              <option value="13">تاون هال ۱۳</option>
+              <option value="14">تاون هال ۱۴</option>
+              <option value="15">تاون هال ۱۵</option>
+              <option value="16">تاون هال ۱۶</option>
+              <option value="17">تاون هال ۱۷</option>
+              <option value="18">تاون هال ۱۸</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>🏗 لول دهکده بیلدر</label>
+            <input type="number" id="fBuilder" placeholder="مثلاً ۱۰" min="0" max="20">
+          </div>
+          <div class="field">
+            <label>✏️ هزینه تغییر نام</label>
+            <input type="number" id="fNameChange" placeholder="مثلاً ۱۵۰۰" min="0">
+          </div>
+        </div>
+
+        <div class="row-2">
+          <div class="field">
+            <label>💰 قیمت (تومان) *</label>
+            <input type="number" id="fPrice" required placeholder="مثلاً ۵۲۰۰" min="0">
+          </div>
+          <div class="field">
+            <label>🔢 کد اکانت *</label>
+            <input type="text" id="fCode" required placeholder="مثلاً ۲۳۰">
+          </div>
+        </div>
+
+        <div class="field">
+          <label>📝 توضیحات</label>
+          <textarea id="fDescription" placeholder="توضیحات کامل اکانت..."></textarea>
+        </div>
+
+        <div class="field">
+          <label>🔘 وضعیت</label>
+          <select id="fStatus">
+            <option value="available">✅ موجود</option>
+            <option value="sold">❌ فروش رفته</option>
+          </select>
+        </div>
+
+        <!-- آپلود عکس -->
+        <div class="field">
+          <label>📸 عکس اکانت</label>
+          <div class="upload-box" onclick="document.getElementById('fImage').click()">
+            <span class="icon">📁</span>
+            <div class="text">برای انتخاب عکس کلیک کن (jpg, png)</div>
+            <input type="file" id="fImage" accept="image/*" onchange="previewImage(this)">
+          </div>
+          <img id="previewImg" class="preview-img hidden" alt="پیش‌نمایش">
+        </div>
+
+        <button type="submit" class="btn btn-primary" id="submitBtn" style="width: 100%;">
+          📤 ثبت اکانت
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- تب لیست -->
+  <div id="tab-list" class="hidden">
+    <div class="card">
+      <h2>📋 لیست اکانت‌ها</h2>
+      <div id="accountsList" class="accounts-list">
+        <div class="empty">
+          <div class="spinner"></div>
+          <p>در حال بارگذاری...</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- مودال ویرایش -->
+<div class="modal-overlay" id="editModal">
+  <div class="modal">
+    <h2 style="color: var(--gold); margin-bottom: 20px; font-family: 'Bebas Neue', sans-serif;">✏️ ویرایش اکانت</h2>
+    <div class="msg" id="editMsg"></div>
+    <form id="editForm">
+      <input type="hidden" id="editId">
+      <input type="hidden" id="editOldImage">
+
+      <div class="row-2">
+        <div class="field">
+          <label>عنوان</label>
+          <input type="text" id="efTitle" required>
+        </div>
+        <div class="field">
+          <label>شعار</label>
+          <input type="text" id="efTagline">
+        </div>
+      </div>
+
+      <div class="row-3">
+        <div class="field">
+          <label>تاون هال</label>
+          <select id="efTownhall" required>
+            <option value="1">۱</option><option value="2">۲</option><option value="3">۳</option>
+            <option value="4">۴</option><option value="5">۵</option><option value="6">۶</option>
+            <option value="7">۷</option><option value="8">۸</option><option value="9">۹</option>
+            <option value="10">۱۰</option><option value="11">۱۱</option><option value="12">۱۲</option>
+            <option value="13">۱۳</option><option value="14">۱۴</option><option value="15">۱۵</option>
+            <option value="16">۱۶</option><option value="17">۱۷</option><option value="18">۱۸</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>لول بیلدر</label>
+          <input type="number" id="efBuilder">
+        </div>
+        <div class="field">
+          <label>تغییر نام</label>
+          <input type="number" id="efNameChange">
+        </div>
+      </div>
+
+      <div class="row-2">
+        <div class="field">
+          <label>قیمت</label>
+          <input type="number" id="efPrice" required>
+        </div>
+        <div class="field">
+          <label>کد اکانت</label>
+          <input type="text" id="efCode" required>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>توضیحات</label>
+        <textarea id="efDescription"></textarea>
+      </div>
+
+      <div class="field">
+        <label>وضعیت</label>
+        <select id="efStatus">
+          <option value="available">✅ موجود</option>
+          <option value="sold">❌ فروش رفته</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label>📸 تغییر عکس (اختیاری)</label>
+        <div class="upload-box" onclick="document.getElementById('efImage').click()">
+          <span class="icon">📁</span>
+          <div class="text">برای انتخاب عکس جدید کلیک کن</div>
+          <input type="file" id="efImage" accept="image/*" onchange="previewEditImage(this)">
+        </div>
+        <img id="editPreviewImg" class="preview-img hidden" alt="پیش‌نمایش">
+      </div>
+
+      <div style="display: flex; gap: 10px; margin-top: 16px;">
+        <button type="submit" class="btn btn-primary" id="editSubmitBtn" style="flex: 1;">
+          💾 ذخیره تغییرات
+        </button>
+        <button type="button" class="btn btn-danger" onclick="closeEditModal()">
+          انصراف
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script type="module">
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
+
+// ===== اطلاعات اتصال Supabase =====
+const SUPABASE_URL = 'https://ifsjhzhogxthighbcyyh.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imlmc2poemhvZ3h0aWhnaGJjeXloIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTAwMDI5ODMsImV4cCI6MjEwNTU3ODk4M30.9r2IWXK2G9GOAeWhS1UgDEC8IhAgvZcWgM6-YusbBYc';
+
+const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+
+// ===== بررسی لاگین =====
+if (sessionStorage.getItem('rtx_logged_in') !== 'true') {
+  window.location.href = 'index.html';
+}
+
+// ===== خروج =====
+window.logout = function(e) {
+  e.preventDefault();
+  sessionStorage.removeItem('rtx_logged_in');
+  window.location.href = 'index.html';
+};
+
+// ===== تغییر تب =====
+document.querySelectorAll('.tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    const target = tab.dataset.tab;
+    document.getElementById('tab-add').classList.toggle('hidden', target !== 'add');
+    document.getElementById('tab-list').classList.toggle('hidden', target !== 'list');
+    if (target === 'list') loadAccounts();
+  });
+});
+
+// ===== پیام =====
+function showMsg(elId, text, type = 'success') {
+  const el = document.getElementById(elId);
+  el.textContent = text;
+  el.className = 'msg show ' + type;
+  setTimeout(() => { el.classList.remove('show'); }, 4000);
+}
+
+// ===== پیش‌نمایش عکس =====
+window.previewImage = function(input) {
+  const preview = document.getElementById('previewImg');
+  if (input.files && input.files[0]) {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      preview.src = e.target.result;
+      preview.classList.remove('hidden');
+    };
+    reader.readAsDataURL(input.files[0]);
+  }
+};
+
+window.previewEditImage = function(input) {
+  const preview = document.getElementById('editPreviewImg');
+  if (input.files && input.files[0]) {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      preview.src = e.target.result;
+      preview.classList.remove('hidden');
+    };
+    reader.readAsDataURL(input.files[0]);
+  }
+};
+
+// ===== آپلود عکس به Supabase Storage =====
+async function uploadImage(file) {
+  const ext = file.name.split('.').pop();
+  const fileName = `${Date.now()}-${Math.random().toString(36).substring(7)}.${ext}`;
+
+  const { data, error } = await supabase.storage
+    .from('account-images')
+    .upload(fileName, file);
+
+  if (error) {
+    console.error('Upload error:', error);
+    throw new Error('خطا در آپلود عکس: ' + error.message);
+  }
+
+  const { data: urlData } = supabase.storage
+    .from('account-images')
+    .getPublicUrl(fileName);
+
+  return urlData.publicUrl;
+}
+
+// ===== افزودن اکانت =====
+document.getElementById('accountForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const btn = document.getElementById('submitBtn');
+  btn.disabled = true;
+  btn.innerHTML = 'در حال ثبت<span class="spinner"></span>';
+
+  try {
+    let imageUrl = '';
+    const imageFile = document.getElementById('fImage').files[0];
+    if (imageFile) {
+      imageUrl = await uploadImage(imageFile);
+    }
+
+    const { error } = await supabase.from('accounts').insert({
+      title: document.getElementById('fTitle').value.trim(),
+      tagline: document.getElementById('fTagline').value.trim(),
+      townhall: parseInt(document.getElementById('fTownhall').value),
+      builder_level: parseInt(document.getElementById('fBuilder').value) || null,
+      name_change: parseInt(document.getElementById('fNameChange').value) || null,
+      price: parseInt(document.getElementById('fPrice').value),
+      code: document.getElementById('fCode').value.trim(),
+      description: document.getElementById('fDescription').value.trim(),
+      status: document.getElementById('fStatus').value,
+      image: imageUrl
+    });
+
+    if (error) throw error;
+
+    showMsg('addMsg', '✅ اکانت با موفقیت ثبت شد!', 'success');
+    document.getElementById('accountForm').reset();
+    document.getElementById('previewImg').classList.add('hidden');
+    document.getElementById('fTitle').value = 'اکانت کلش آف کلنز';
+    document.getElementById('fTagline').value = '🔥 نقد و اقساط کاملا تضمینی 🔥';
+    loadStats();
+  } catch (err) {
+    console.error(err);
+    showMsg('addMsg', '❌ خطا: ' + err.message, 'error');
+  }
+
+  btn.disabled = false;
+  btn.textContent = '📤 ثبت اکانت';
+});
+
+// ===== لیست اکانت‌ها =====
+let allAccounts = [];
+
+async function loadAccounts() {
+  const list = document.getElementById('accountsList');
+  list.innerHTML = '<div class="empty"><div class="spinner"></div><p>در حال بارگذاری...</p></div>';
+
+  const { data, error } = await supabase
+    .from('accounts')
+    .select('*')
+    .order('created_at', { ascending: false });
+
+  if (error) {
+    list.innerHTML = '<div class="empty"><p>❌ خطا: ' + error.message + '</p></div>';
+    return;
+  }
+
+  allAccounts = data || [];
+
+  if (allAccounts.length === 0) {
+    list.innerHTML = '<div class="empty"><span class="emoji">📭</span><p>هنوز اکانتی اضافه نشده</p></div>';
+    return;
+  }
+
+  list.innerHTML = allAccounts.map(acc => `
+    <div class="account-row">
+      <div class="thumb">
+        ${acc.image ? `<img src="${acc.image}" alt="">` : '🏰'}
+      </div>
+      <div class="info">
+        <h3>${escapeHtml(acc.title)} - #${escapeHtml(acc.code)}</h3>
+        <div class="meta">
+          <span>TH ${acc.townhall}</span>
+          <span>💰 ${acc.price?.toLocaleString('fa-IR')}</span>
+          <span class="status-badge ${acc.status === 'available' ? 'status-available' : 'status-sold'}">
+            ${acc.status === 'available' ? '✅ موجود' : '❌ فروش رفته'}
+          </span>
+        </div>
+      </div>
+      <div class="account-actions">
+        <button class="btn-edit" onclick="editAccount('${acc.id}')">✏️ ویرایش</button>
+        <button class="btn-danger" onclick="deleteAccount('${acc.id}')">🗑 حذف</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function escapeHtml(str) {
+  return String(str || '').replace(/[&<>"']/g, m => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+  }[m]));
+}
+
+// ===== آمار =====
+async function loadStats() {
+  const { data } = await supabase.from('accounts').select('status');
+  if (!data) return;
+
+  const total = data.length;
+  const available = data.filter(a => a.status === 'available').length;
+  const sold = data.filter(a => a.status === 'sold').length;
+
+  document.getElementById('totalCount').textContent = total.toLocaleString('fa-IR');
+  document.getElementById('availableCount').textContent = available.toLocaleString('fa-IR');
+  document.getElementById('soldCount').textContent = sold.toLocaleString('fa-IR');
+}
+
+// ===== ویرایش =====
+window.editAccount = function(id) {
+  const acc = allAccounts.find(a => String(a.id) === String(id));
+  if (!acc) return;
+
+  document.getElementById('editId').value = id;
+  document.getElementById('editOldImage').value = acc.image || '';
+  document.getElementById('efTitle').value = acc.title || '';
+  document.getElementById('efTagline').value = acc.tagline || '';
+  document.getElementById('efTownhall').value = acc.townhall || '1';
+  document.getElementById('efBuilder').value = acc.builder_level || '';
+  document.getElementById('efNameChange').value = acc.name_change || '';
+  document.getElementById('efPrice').value = acc.price || '';
+  document.getElementById('efCode').value = acc.code || '';
+  document.getElementById('efDescription').value = acc.description || '';
+  document.getElementById('efStatus').value = acc.status || 'available';
+  document.getElementById('editPreviewImg').classList.add('hidden');
+  document.getElementById('editModal').classList.add('active');
+};
+
+window.closeEditModal = function() {
+  document.getElementById('editModal').classList.remove('active');
+};
+
+document.getElementById('editForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const btn = document.getElementById('editSubmitBtn');
+  btn.disabled = true;
+  btn.innerHTML = 'در حال ذخیره<span class="spinner"></span>';
+
+  try {
+    let imageUrl = document.getElementById('editOldImage').value;
+    const imageFile = document.getElementById('efImage').files[0];
+    if (imageFile) {
+      imageUrl = await uploadImage(imageFile);
+    }
+
+    const { error } = await supabase.from('accounts').update({
+      title: document.getElementById('efTitle').value.trim(),
+      tagline: document.getElementById('efTagline').value.trim(),
+      townhall: parseInt(document.getElementById('efTownhall').value),
+      builder_level: parseInt(document.getElementById('efBuilder').value) || null,
+      name_change: parseInt(document.getElementById('efNameChange').value) || null,
+      price: parseInt(document.getElementById('efPrice').value),
+      code: document.getElementById('efCode').value.trim(),
+      description: document.getElementById('efDescription').value.trim(),
+      status: document.getElementById('efStatus').value,
+      image: imageUrl
+    }).eq('id', document.getElementById('editId').value);
+
+    if (error) throw error;
+
+    closeEditModal();
+    loadAccounts();
+    loadStats();
+  } catch (err) {
+    showMsg('editMsg', '❌ خطا: ' + err.message, 'error');
+  }
+
+  btn.disabled = false;
+  btn.textContent = '💾 ذخیره تغییرات';
+});
+
+// ===== حذف =====
+window.deleteAccount = async function(id) {
+  if (!confirm('آیا از حذف این اکانت مطمئن هستید؟')) return;
+  const { error } = await supabase.from('accounts').delete().eq('id', id);
+  if (error) {
+    alert('خطا در حذف: ' + error.message);
+  } else {
+    loadAccounts();
+    loadStats();
+  }
+};
+
+// ===== شروع =====
+loadStats();
+</script>
+
+</body>
+</html>

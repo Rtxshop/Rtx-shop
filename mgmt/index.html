@@ -22,9 +22,7 @@
     --glow: 0 0 20px rgba(255, 184, 0, 0.4);
     --glow-strong: 0 0 40px rgba(255, 184, 0, 0.6);
   }
-
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
   body {
     font-family: 'Vazirmatn', sans-serif;
     background: var(--dark);
@@ -40,8 +38,6 @@
       radial-gradient(circle at 80% 80%, rgba(77, 166, 255, 0.15) 0%, transparent 40%),
       radial-gradient(circle at 50% 50%, rgba(255, 184, 0, 0.08) 0%, transparent 50%);
   }
-
-  /* ذرات شناور */
   .floating-particles {
     position: fixed; inset: 0; pointer-events: none; z-index: 1; overflow: hidden;
   }
@@ -58,7 +54,6 @@
     0%, 100% { transform: translate(0, 0) rotate(0deg); }
     50% { transform: translate(30px, -50px) rotate(180deg); }
   }
-
   .login-box {
     background: linear-gradient(135deg, rgba(26, 26, 46, 0.95), rgba(37, 37, 64, 0.95));
     backdrop-filter: blur(20px);
@@ -76,7 +71,6 @@
     from { opacity: 0; transform: translateY(40px); }
     to { opacity: 1; transform: translateY(0); }
   }
-
   .login-logo {
     width: 80px;
     height: 80px;
@@ -97,7 +91,6 @@
     0%, 100% { box-shadow: 0 0 20px rgba(255, 184, 0, 0.4); }
     50% { box-shadow: 0 0 40px rgba(255, 184, 0, 0.8); }
   }
-
   .login-box h1 {
     font-family: 'Bebas Neue', 'Vazirmatn', sans-serif;
     font-size: 28px;
@@ -115,7 +108,6 @@
     font-size: 13px;
     margin-bottom: 32px;
   }
-
   .field { margin-bottom: 18px; }
   .field label {
     display: block;
@@ -142,7 +134,6 @@
     background: rgba(255, 184, 0, 0.05);
     box-shadow: 0 0 0 4px rgba(255, 184, 0, 0.15);
   }
-
   .btn {
     width: 100%;
     padding: 14px;
@@ -168,7 +159,6 @@
     cursor: not-allowed;
     transform: none;
   }
-
   .error {
     background: rgba(230, 57, 70, 0.15);
     border: 1px solid rgba(230, 57, 70, 0.5);
@@ -187,7 +177,6 @@
     25% { transform: translateX(-8px); }
     75% { transform: translateX(8px); }
   }
-
   .spinner {
     display: inline-block;
     width: 16px;
@@ -200,7 +189,6 @@
     margin-left: 8px;
   }
   @keyframes spin { to { transform: rotate(360deg); } }
-
   .back-link {
     display: block;
     text-align: center;
@@ -232,8 +220,8 @@
 
   <form id="loginForm">
     <div class="field">
-      <label>👤 نام کاربری</label>
-      <input type="text" id="username" required placeholder="admin" autocomplete="username">
+      <label>👤 ایمیل</label>
+      <input type="email" id="email" required placeholder="admin@rtxshop.local" autocomplete="username" value="admin@rtxshop.local">
     </div>
     <div class="field">
       <label>🔑 رمز عبور</label>
@@ -245,43 +233,55 @@
   <a href="../index.html" class="back-link">← بازگشت به سایت</a>
 </div>
 
-<script>
-  // ⚠️ رمز و نام کاربری رو اینجا تغییر بده
-  const VALID_USERNAME = 'admin';
-  const VALID_PASSWORD = 'RTX@1404';
+<script type="module">
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
 
-  const form = document.getElementById('loginForm');
-  const usernameInput = document.getElementById('username');
-  const passwordInput = document.getElementById('password');
-  const loginBtn = document.getElementById('loginBtn');
-  const errorBox = document.getElementById('errorBox');
+const SUPABASE_URL = 'https://ifsjhzhogxthighbcyyh.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imlmc2poemhvZ3h0aWhnaGJjeXloIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTAwMDI5ODMsImV4cCI6MjEwNTU3ODk4M30.9r2IWXK2G9GOAeWhS1UgDEC8IhAgvZcWgM6-YusbBYc';
 
-  // اگه قبلاً لاگین کرده، مستقیم بره پنل
-  if (sessionStorage.getItem('rtx_logged_in') === 'true') {
-    window.location.href = 'panel.html';
+const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+
+const form = document.getElementById('loginForm');
+const emailInput = document.getElementById('email');
+const passwordInput = document.getElementById('password');
+const loginBtn = document.getElementById('loginBtn');
+const errorBox = document.getElementById('errorBox');
+
+// اگه قبلاً لاگین کرده، مستقیم بره پنل
+const { data: { session } } = await supabase.auth.getSession();
+if (session) {
+  window.location.href = 'panel.html';
+}
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  errorBox.classList.remove('show');
+  loginBtn.disabled = true;
+  loginBtn.innerHTML = 'در حال ورود<span class="spinner"></span>';
+
+  const { data, error } = await supabase.auth.signInWithPassword({
+    email: emailInput.value.trim(),
+    password: passwordInput.value
+  });
+
+  if (error) {
+    console.error(error);
+    let msg = 'خطا در ورود. لطفاً دوباره تلاش کنید.';
+    if (error.message.includes('Invalid login credentials')) {
+      msg = '❌ ایمیل یا رمز عبور اشتباه است';
+    } else if (error.message.includes('Email not confirmed')) {
+      msg = 'ایمیل شما تایید نشده است';
+    }
+    errorBox.textContent = msg;
+    errorBox.classList.add('show');
+    loginBtn.disabled = false;
+    loginBtn.textContent = '🚀 ورود به پنل';
+    return;
   }
 
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    errorBox.classList.remove('show');
-    loginBtn.disabled = true;
-    loginBtn.innerHTML = 'در حال ورود<span class="spinner"></span>';
-
-    setTimeout(() => {
-      const u = usernameInput.value.trim();
-      const p = passwordInput.value;
-
-      if (u === VALID_USERNAME && p === VALID_PASSWORD) {
-        sessionStorage.setItem('rtx_logged_in', 'true');
-        window.location.href = 'panel.html';
-      } else {
-        errorBox.textContent = '❌ نام کاربری یا رمز عبور اشتباه است';
-        errorBox.classList.add('show');
-        loginBtn.disabled = false;
-        loginBtn.textContent = '🚀 ورود به پنل';
-      }
-    }, 600);
-  });
+  // ورود موفق
+  window.location.href = 'panel.html';
+});
 </script>
 
 </body>

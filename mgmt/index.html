@@ -170,6 +170,8 @@
     text-align: center;
     display: none;
     animation: shake 0.4s;
+    word-wrap: break-word;
+    line-height: 1.6;
   }
   .error.show { display: block; }
   @keyframes shake {
@@ -221,7 +223,7 @@
   <form id="loginForm">
     <div class="field">
       <label>👤 ایمیل</label>
-      <input type="email" id="email" required placeholder="admin@rtxshop.local" autocomplete="username" value="admin@rtxshop.local">
+      <input type="email" id="email" required placeholder="rtx@gmail.com" autocomplete="username" value="rtx@gmail.com">
     </div>
     <div class="field">
       <label>🔑 رمز عبور</label>
@@ -259,28 +261,30 @@ form.addEventListener('submit', async (e) => {
   loginBtn.disabled = true;
   loginBtn.innerHTML = 'در حال ورود<span class="spinner"></span>';
 
-  const { data, error } = await supabase.auth.signInWithPassword({
-    email: emailInput.value.trim(),
-    password: passwordInput.value
-  });
+  try {
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email: emailInput.value.trim(),
+      password: passwordInput.value
+    });
 
-  if (error) {
-    console.error(error);
-    let msg = 'خطا در ورود. لطفاً دوباره تلاش کنید.';
-    if (error.message.includes('Invalid login credentials')) {
-      msg = '❌ ایمیل یا رمز عبور اشتباه است';
-    } else if (error.message.includes('Email not confirmed')) {
-      msg = 'ایمیل شما تایید نشده است';
+    if (error) {
+      console.error('Login error:', error);
+      errorBox.textContent = '❌ خطا: ' + error.message;
+      errorBox.classList.add('show');
+      loginBtn.disabled = false;
+      loginBtn.textContent = '🚀 ورود به پنل';
+      return;
     }
-    errorBox.textContent = msg;
+
+    // ورود موفق
+    window.location.href = 'panel.html';
+  } catch (err) {
+    console.error('Catch error:', err);
+    errorBox.textContent = '❌ خطای غیرمنتظره: ' + err.message;
     errorBox.classList.add('show');
     loginBtn.disabled = false;
     loginBtn.textContent = '🚀 ورود به پنل';
-    return;
   }
-
-  // ورود موفق
-  window.location.href = 'panel.html';
 });
 </script>
 

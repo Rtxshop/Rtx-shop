@@ -235,13 +235,12 @@
   <a href="../index.html" class="back-link">← بازگشت به سایت</a>
 </div>
 
-<!-- Supabase Library -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
 // ===== اطلاعات اتصال Supabase =====
-const SUPABASE_URL = 'https://ifsjhzhogxthighbcyyh.supabase.co';
-const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imlmc2poemhvZ3h0aWhnaGJjeXloIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTAwMDI5ODMsImV4cCI6MjEwNTU3ODk4M30.9r2IWXK2G9GOAeWhS1UgDEC8IhAgvZcWgM6-YusbBYc';
+const SUPABASE_URL = 'https://ifsjhzhogxtihghbcyyh.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_GOsQI9E08br_xHX0kc5S0g_xrKrbtOW';
 
 const { createClient } = supabase;
 const supabaseClient = createClient(SUPABASE_URL, SUPABASE_KEY);
@@ -252,7 +251,6 @@ const passwordInput = document.getElementById('password');
 const loginBtn = document.getElementById('loginBtn');
 const errorBox = document.getElementById('errorBox');
 
-// اگه قبلاً لاگین کرده، مستقیم بره پنل
 async function checkSession() {
   const { data: { session } } = await supabaseClient.auth.getSession();
   if (session) {
@@ -282,7 +280,6 @@ form.addEventListener('submit', async (e) => {
       return;
     }
 
-    // ورود موفق
     window.location.href = 'panel.html';
   } catch (err) {
     console.error('Catch error:', err);
